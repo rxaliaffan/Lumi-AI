@@ -1,15 +1,48 @@
 export async function POST(req) {
   try {
-    const { prompt } = await req.json();
+    const { message, medicines, riskScore = 0, warnings = [] } = await req.json();
 
-    if (!prompt) {
+    if (!message) {
       return Response.json(
-        { error: 'Prompt is required.' },
+        { error: 'Message is required.' },
         { status: 400 }
       );
     }
 
     const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
+    const medsContext =
+      medicines && medicines.length > 0
+        ? medicines.map((m) => `${m.name} ${m.dosage}`).join(', ')
+        : 'No medicines provided';
+
+    const warningsContext =
+      warnings && warnings.length > 0
+        ? warnings.join(', ')
+        : 'No major warnings detected';
+
+    const fullPrompt = `
+You are Lumi, a professional AI pharmacist focused on patient safety.
+
+Rules:
+- Use simple, clear language
+- Highlight risks clearly
+- Mention side effects when relevant
+- Never give dangerous advice
+- If unsure → say "Please consult your doctor"
+- Do NOT hallucinate
+
+Patient medicines:
+${medsContext}
+
+Risk score: ${riskScore}/10
+
+Warnings:
+${warningsContext}
+
+User question:
+${message}
+`;
 
     const geminiResponse = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`,
@@ -23,7 +56,7 @@ export async function POST(req) {
             {
               parts: [
                 {
-                  text: `You are Lumi, an AI digital pharmacist focused on medication safety. Provide safe, accurate, patient-friendly explanations. User question: ${prompt}`,
+                  text: fullPrompt,
                 },
               ],
             },
@@ -36,7 +69,7 @@ export async function POST(req) {
 
     const reply =
       data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      'Sorry, I could not process that medication query right now.';
+      'Sorry, I could not process that safely.';
 
     return Response.json({
       success: true,
@@ -50,6 +83,7 @@ export async function POST(req) {
         success: false,
         error: 'Failed to process AI request.',
       },
-      { status: 500 } );
+      { status: 500 }
+    );
   }
 }
