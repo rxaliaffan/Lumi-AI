@@ -1,17 +1,96 @@
+'use client';
+
+import { useState } from 'react';
+import { SendHorizonal } from 'lucide-react';
+
 export default function ChatAssistant() {
+  const [prompt, setPrompt] = useState('');
+  const [messages, setMessages] = useState([
+    {
+      role: 'assistant',
+      text: 'Hello, I am Lumi AI Pharmacist. Ask me anything about your medicines.',
+    },
+  ]);
+  const [loading, setLoading] = useState(false);
+
+  const handleSend = async () => {
+    if (!prompt.trim()) return;
+
+    const userMessage = { role: 'user', text: prompt };
+    setMessages((prev) => [...prev, userMessage]);
+    setLoading(true);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt }),
+      });
+
+      const result = await response.json();
+
+      const aiMessage = {
+        role: 'assistant',
+        text: result.reply || 'Unable to answer right now.',
+      };
+
+      setMessages((prev) => [...prev, aiMessage]);
+    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          text: 'An error occurred while processing your medication question.',
+        }, ]);
+    }
+
+    setPrompt('');
+    setLoading(false);
+  };
+
   return (
-    <div className="card flex flex-col items-center text-center space-y-3">
-      <div className="text-4xl">🤖</div>
+    <div className="bg-white rounded-2xl shadow-soft p-8 h-full flex flex-col">
+      <h3 className="text-2xl font-semibold mb-6">Lumi AI Assistant</h3>
 
-      <h3 className="font-semibold text-gray-800">Hi! I'm Lumi</h3>
+      <div className="flex-1 overflow-y-auto space-y-4 max-h-96 mb-6 pr-2">
+        {messages.map((msg, idx) => (
+          <div
+            key={idx}
+            className={`p-4 rounded-2xl max-w-[85%] ${
+              msg.role === 'user'
+                ? 'bg-primary text-white ml-auto'
+                : 'bg-slate-100 text-slate-700'
+            }`}
+          >
+            {msg.text}
+          </div>
+        ))}
 
-      <p className="text-sm text-gray-500">
-        Your AI Pharmacist. How can I help you today?
-      </p>
+        {loading && (
+          <div className="bg-slate-100 text-slate-500 p-4 rounded-2xl max-w-[85%]">
+            Lumi is analyzing...
+          </div>
+        )}
+      </div>
 
-      <button className="bg-purple-500 text-white px-4 py-2 rounded-full text-sm hover:opacity-90 transition">
-        Talk to Lumi
-      </button>
-    </div>
-  );
+      <div className="flex gap-3">
+        <input
+          type="text"
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          placeholder="Ask about medicines, dosage, side effects..."
+          className="flex-1 border rounded-2xl px-4 py-3 outline-none"
+          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+        />
+
+        <button
+          onClick={handleSend}
+          className="bg-primary text-white px-5 rounded-2xl flex items-center justify-center"
+        >
+          <SendHorizonal size={20} />
+        </button>
+      </div>
+    </div> );
 }
