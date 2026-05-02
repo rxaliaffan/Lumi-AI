@@ -1,6 +1,6 @@
 export default function AdherenceCard() {
   return (
-    <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center justify-center">
+    <div className="card flex flex-col items-center justify-center">
       <h3 className="font-semibold text-gray-800 mb-4">
         Adherence Progress
       </h3>
