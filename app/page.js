@@ -1,8 +1,8 @@
-import Sidebar from '@/components/Sidebar';
-import Header from '@/components/Header';
-import ScanCard from '@/components/ScanCard';
-import RiskScore from '@/components/RiskScore';
-import MedicinesTable from '@/components/MedicinesTable';
+import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
+import ScanCard from '../components/ScanCard';
+import RiskScore from '../components/RiskScore';
+import MedicinesTable from '../components/MedicinesTable';
 
 export default function HomePage() {
   return (
