@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 
-/* =========================================================
-   ICON COMPONENTS (Exact SVGs from the design)
-   ========================================================= */
+/* ================= SVG ICONS ================= */
 const SparkleIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/>
@@ -12,51 +10,51 @@ const SparkleIcon = () => (
   </svg>
 );
 
-const HomeIcon = ({ active }) => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? "#4f46e5" : "#9ca3af"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const HomeIcon = ({ color = "#9ca3af" }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
     <polyline points="9 22 9 12 15 12 15 22"/>
   </svg>
 );
 
-const CameraIcon = ({ active }) => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? "#4f46e5" : "#9ca3af"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const CameraIcon = ({ color = "#9ca3af" }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
     <circle cx="12" cy="13" r="4"/>
   </svg>
 );
 
-const PillIcon = ({ active }) => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? "#4f46e5" : "#9ca3af"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const PillIcon = ({ color = "#9ca3af" }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
     <path d="m8.5 8.5 7 7"/>
   </svg>
 );
 
-const WarningIconNav = ({ active }) => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? "#4f46e5" : "#9ca3af"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const WarningIcon = ({ color = "#9ca3af" }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
     <line x1="12" y1="9" x2="12" y2="13"/>
     <line x1="12" y1="17" x2="12.01" y2="17"/>
   </svg>
 );
 
-const BellIcon = ({ active }) => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? "#4f46e5" : "#9ca3af"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const BellIcon = ({ color = "#9ca3af" }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
     <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
   </svg>
 );
 
-const UserIcon = ({ active }) => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? "#4f46e5" : "#9ca3af"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const UserIcon = ({ color = "#9ca3af" }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
     <circle cx="12" cy="7" r="4"/>
   </svg>
 );
 
-const BotIconNav = ({ active }) => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? "#4f46e5" : "#9ca3af"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const BotIcon = ({ color = "#9ca3af" }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <circle cx="12" cy="5" r="2"/>
     <path d="M12 7v4"/>
@@ -65,21 +63,14 @@ const BotIconNav = ({ active }) => (
   </svg>
 );
 
-const SettingsIcon = ({ active }) => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? "#4f46e5" : "#9ca3af"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const SettingsIcon = ({ color = "#9ca3af" }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="3"/>
     <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
   </svg>
 );
 
-const CameraActionIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-    <circle cx="12" cy="13" r="4"/>
-  </svg>
-);
-
-const UploadActionIcon = () => (
+const UploadIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
     <polyline points="17 8 12 3 7 8"/>
@@ -87,8 +78,8 @@ const UploadActionIcon = () => (
   </svg>
 );
 
-const MicIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const MicIcon = ({ color = "currentColor" }) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
     <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
     <line x1="12" y1="19" x2="12" y2="23"/>
@@ -104,15 +95,15 @@ const GlobeIcon = () => (
   </svg>
 );
 
-const CheckCircleIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+const CheckCircleIcon = ({ color = "currentColor" }) => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
     <polyline points="22 4 12 14.01 9 11.01"/>
   </svg>
 );
 
-const ClockIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const ClockIcon = ({ color = "currentColor" }) => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10"/>
     <polyline points="12 6 12 12 16 14"/>
   </svg>
@@ -138,8 +129,8 @@ const MoonIcon = () => (
   </svg>
 );
 
-const AlertTriangleIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const AlertTriangleIcon = ({ color = "currentColor" }) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
     <line x1="12" y1="9" x2="12" y2="13"/>
     <line x1="12" y1="17" x2="12.01" y2="17"/>
@@ -161,7 +152,7 @@ const PhoneIcon = () => (
 );
 
 const ShoppingCartIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="9" cy="21" r="1"/>
     <circle cx="20" cy="21" r="1"/>
     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -169,7 +160,7 @@ const ShoppingCartIcon = () => (
 );
 
 const StethoscopeIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4.8 2.3A.31.31 0 0 0 4 2.53v9.24a4 4 0 0 0 4 4h.4a4 4 0 0 0 4-4V2.53a.31.31 0 0 0-.8-.23 6 6 0 0 1-2.8.7 6 6 0 0 1-2.8-.7z"/>
     <path d="M8 15.8V17a3 3 0 0 0 3 3h2a3 3 0 0 0 3-3v-1.2"/>
     <path d="M16 11h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2"/>
@@ -177,7 +168,7 @@ const StethoscopeIcon = () => (
 );
 
 const ShareIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
     <polyline points="16 6 12 2 8 6"/>
     <line x1="12" y1="2" x2="12" y2="15"/>
@@ -203,9 +194,7 @@ const ChevronDownIcon = () => (
   </svg>
 );
 
-/* =========================================================
-   CIRCULAR PROGRESS COMPONENTS
-   ========================================================= */
+/* ================= CIRCULAR PROGRESS ================= */
 const RiskScoreCircle = () => {
   const size = 140;
   const stroke = 10;
@@ -248,9 +237,7 @@ const AdherenceRing = () => {
   );
 };
 
-/* =========================================================
-   ROBOT AVATAR (CSS-only to match template)
-   ========================================================= */
+/* ================= ROBOT AVATAR ================= */
 const RobotAvatar = ({ size = 80 }) => (
   <div className="relative mx-auto" style={{ width: size, height: size }}>
     <div className="w-full h-full bg-white rounded-full shadow-sm flex items-center justify-center overflow-hidden border-2 border-indigo-100">
@@ -273,21 +260,19 @@ const RobotAvatar = ({ size = 80 }) => (
   </div>
 );
 
-/* =========================================================
-   MAIN PAGE
-   ========================================================= */
+/* ================= MAIN PAGE ================= */
 export default function Page() {
   const [activeMenu, setActiveMenu] = useState("Home");
 
   const navItems = [
-    { name: "Home", icon: (a) => <HomeIcon active={a} /> },
-    { name: "Scan Prescription", icon: (a) => <CameraIcon active={a} /> },
-    { name: "My Medicines", icon: (a) => <PillIcon active={a} /> },
-    { name: "Drug Interactions", icon: (a) => <WarningIconNav active={a} /> },
-    { name: "Reminders", icon: (a) => <BellIcon active={a} /> },
-    { name: "Patient Profile", icon: (a) => <UserIcon active={a} /> },
-    { name: "AI Chat Assistant", icon: (a) => <BotIconNav active={a} /> },
-    { name: "Settings", icon: (a) => <SettingsIcon active={a} /> },
+    { name: "Home", icon: (c) => <HomeIcon color={c} /> },
+    { name: "Scan Prescription", icon: (c) => <CameraIcon color={c} /> },
+    { name: "My Medicines", icon: (c) => <PillIcon color={c} /> },
+    { name: "Drug Interactions", icon: (c) => <WarningIcon color={c} /> },
+    { name: "Reminders", icon: (c) => <BellIcon color={c} /> },
+    { name: "Patient Profile", icon: (c) => <UserIcon color={c} /> },
+    { name: "AI Chat Assistant", icon: (c) => <BotIcon color={c} /> },
+    { name: "Settings", icon: (c) => <SettingsIcon color={c} /> },
   ];
 
   const medicines = [
@@ -333,13 +318,11 @@ export default function Page() {
                 key={item.name}
                 onClick={() => setActiveMenu(item.name)}
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl cursor-pointer transition-all duration-200 ${
-                  isActive
-                    ? "bg-indigo-50 text-indigo-600 font-semibold"
-                    : "text-gray-600 hover:bg-gray-50"
+                  isActive ? "bg-indigo-50 text-indigo-600 font-semibold" : "text-gray-600 hover:bg-gray-50"
                 }`}
               >
                 <span className="flex items-center justify-center w-5">
-                  {item.icon(isActive)}
+                  {item.icon(isActive ? "#4f46e5" : "#9ca3af")}
                 </span>
                 <span className="text-sm">{item.name}</span>
               </div>
@@ -357,7 +340,7 @@ export default function Page() {
             onClick={() => alert("✨ Lumi: How can I help you today?")}
             className="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2 shadow-sm"
           >
-            <MicIcon /> Talk to Lumi
+            <MicIcon color="white" /> Talk to Lumi
           </button>
         </div>
       </aside>
@@ -392,7 +375,9 @@ export default function Page() {
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" 
                 alt="Ali" 
                 className="w-full h-full object-cover"
+                onError={(e) => { e.target.style.display = 'none'; }}
               />
+              <span className="absolute">A</span>
             </div>
           </div>
         </div>
@@ -406,7 +391,6 @@ export default function Page() {
               {/* Illustration */}
               <div className="hidden sm:flex items-center justify-center w-52 bg-indigo-50/60 rounded-2xl relative flex-shrink-0">
                 <div className="relative">
-                  {/* Clipboard */}
                   <div className="w-24 h-32 bg-white rounded-xl shadow-lg border-2 border-indigo-200 flex flex-col items-center pt-5 relative">
                     <div className="absolute -top-3 w-16 h-4 bg-indigo-300 rounded-full"></div>
                     <div className="text-indigo-600 font-black text-3xl mt-1">Rx</div>
@@ -417,11 +401,9 @@ export default function Page() {
                       <div className="h-1 bg-gray-200 rounded-full w-4/6"></div>
                     </div>
                   </div>
-                  {/* Camera badge */}
                   <div className="absolute -bottom-3 -right-4 w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
-                    <CameraActionIcon />
+                    <CameraIcon color="white" />
                   </div>
-                  {/* Decorative leaf */}
                   <div className="absolute -bottom-2 -left-6 w-10 h-10">
                     <svg viewBox="0 0 40 40" fill="none">
                       <path d="M20 35C20 35 5 25 5 15C5 8 12 5 20 5C28 5 35 8 35 15C35 25 20 35 20 35Z" fill="#86efac" opacity="0.6"/>
@@ -439,21 +421,21 @@ export default function Page() {
                 <div className="grid grid-cols-3 gap-3">
                   <button onClick={() => alert("Open camera")} className="bg-gray-50 hover:bg-indigo-50 p-4 rounded-xl text-center transition border border-gray-100 hover:border-indigo-200 group">
                     <div className="w-10 h-10 mx-auto bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mb-2 group-hover:bg-indigo-200 transition">
-                      <CameraActionIcon />
+                      <CameraIcon color="#4f46e5" />
                     </div>
                     <div className="font-semibold text-sm text-gray-800">Scan via Camera</div>
                     <div className="text-[11px] text-gray-500 mt-1">Use camera to scan</div>
                   </button>
                   <button onClick={() => alert("Upload image")} className="bg-gray-50 hover:bg-indigo-50 p-4 rounded-xl text-center transition border border-gray-100 hover:border-indigo-200 group">
                     <div className="w-10 h-10 mx-auto bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-2 group-hover:bg-green-200 transition">
-                      <UploadActionIcon />
+                      <UploadIcon />
                     </div>
                     <div className="font-semibold text-sm text-gray-800">Upload Image</div>
                     <div className="text-[11px] text-gray-500 mt-1">Upload prescription image</div>
                   </button>
                   <button onClick={() => alert("Voice input")} className="bg-gray-50 hover:bg-indigo-50 p-4 rounded-xl text-center transition border border-gray-100 hover:border-indigo-200 group">
                     <div className="w-10 h-10 mx-auto bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-2 group-hover:bg-blue-200 transition">
-                      <MicIcon />
+                      <MicIcon color="#2563eb" />
                     </div>
                     <div className="font-semibold text-sm text-gray-800">Voice Input</div>
                     <div className="text-[11px] text-gray-500 mt-1">Speak prescription details</div>
@@ -485,7 +467,7 @@ export default function Page() {
                 <div className="grid grid-cols-3 gap-3">
                   <button onClick={() => alert("2 interactions found")} className="p-4 rounded-xl bg-red-50 border border-red-100 text-left hover:bg-red-100 transition group">
                     <div className="w-8 h-8 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-2">
-                      <AlertTriangleIcon />
+                      <AlertTriangleIcon color="#dc2626" />
                     </div>
                     <div className="font-bold text-sm text-red-700">Drug Interactions</div>
                     <div className="text-xs text-gray-600 mt-1 leading-snug">2 interactions found</div>
@@ -493,7 +475,7 @@ export default function Page() {
                   </button>
                   <button onClick={() => alert("1 medicine needs adjustment")} className="p-4 rounded-xl bg-orange-50 border border-orange-100 text-left hover:bg-orange-100 transition group">
                     <div className="w-8 h-8 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-2">
-                      <AlertTriangleIcon />
+                      <AlertTriangleIcon color="#ea580c" />
                     </div>
                     <div className="font-bold text-sm text-orange-700">Dose Adjustment</div>
                     <div className="text-xs text-gray-600 mt-1 leading-snug">1 medicine may need adjustment</div>
@@ -501,7 +483,7 @@ export default function Page() {
                   </button>
                   <button onClick={() => alert("1 important warning")} className="p-4 rounded-xl bg-yellow-50 border border-yellow-100 text-left hover:bg-yellow-100 transition group">
                     <div className="w-8 h-8 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center mb-2">
-                      <AlertTriangleIcon />
+                      <AlertTriangleIcon color="#ca8a04" />
                     </div>
                     <div className="font-bold text-sm text-yellow-700">Warnings</div>
                     <div className="text-xs text-gray-600 mt-1 leading-snug">1 important warning</div>
@@ -539,9 +521,9 @@ export default function Page() {
                         <td className="px-6 py-4 text-sm text-gray-600">{med.when}</td>
                         <td className="px-6 py-4">
                           <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold border ${med.badgeBg} ${med.badgeText} ${med.badgeBorder}`}>
-                            {med.safety === "Safe" && <CheckCircleIcon />}
-                            {med.safety === "Caution" && <AlertTriangleIcon />}
-                            {med.safety === "High Risk" && <AlertTriangleIcon />}
+                            {med.safety === "Safe" && <CheckCircleIcon color="#15803d" />}
+                            {med.safety === "Caution" && <AlertTriangleIcon color="#c2410c" />}
+                            {med.safety === "High Risk" && <AlertTriangleIcon color="#b91c1c" />}
                             {med.safety}
                           </span>
                         </td>
@@ -573,7 +555,7 @@ export default function Page() {
                 </div>
               </button>
               <button onClick={() => alert("Set Reminder")} className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-xl text-left transition flex items-center gap-3 shadow-sm">
-                <BellIcon active={false} />
+                <BellIcon color="white" />
                 <div>
                   <div className="font-bold text-sm">Set Reminder</div>
                   <div className="text-xs text-white/80 mt-0.5 leading-tight">Never miss your medication</div>
@@ -610,7 +592,7 @@ export default function Page() {
                       </div>
                     </div>
                     <span className={`inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full ${item.isTaken ? "bg-green-50 text-green-700" : "bg-indigo-50 text-indigo-700"}`}>
-                      {item.isTaken ? <CheckCircleIcon /> : <ClockIcon />}
+                      {item.isTaken ? <CheckCircleIcon color="#15803d" /> : <ClockIcon color="#4338ca" />}
                       {item.status}
                     </span>
                   </div>
