@@ -1,34 +1,30 @@
-"use client";
-import { useState } from 'react';
-import { analyzePrescription } from '../lib/ai';
+import { Upload, Camera, Mic } from 'lucide-react';
 
-export default function ScanCard({ onAnalysisComplete }) {
-  const [loading, setLoading] = useState(false);
-
-  const handleUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    setLoading(true);
-    try {
-      const data = await analyzePrescription(file);
-      onAnalysisComplete(data); // This sends the data to your dashboard state
-    } catch (error) {
-      console.error("AI Analysis failed", error);
-      alert("Lumi couldn't read this clearly. Please try a sharper photo.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
+export default function ScanCard() {
   return (
-    <div className="p-8 border-2 border-dashed border-indigo-100 rounded-[32px] text-center">
-      <input type="file" id="upload" hidden onChange={handleUpload} accept="image/*" />
-      <label htmlFor="upload" className="cursor-pointer">
-        <div className="bg-indigo-600 text-white px-6 py-3 rounded-full font-bold inline-block">
-          {loading ? "Lumi is thinking..." : "Upload Prescription"}
+    <div className="bg-white rounded-2xl shadow-soft p-8">
+      <h3 className="text-2xl font-semibold mb-3">Scan Your Prescription</h3>
+      <p className="text-slate-500 mb-6">
+        Upload, scan, or speak your prescription for AI-powered analysis.
+      </p>
+
+      <div className="border-2 border-dashed border-slate-300 rounded-2xl p-10 text-center bg-slate-50">
+        <p className="text-slate-500 mb-6">
+          Drag & drop prescription image or choose an option below
+        </p>
+
+        <div className="flex justify-center gap-4 flex-wrap">
+          <button className="flex items-center gap-2 px-5 py-3 bg-primary text-white rounded-xl">
+            <Upload size={18} /> Upload
+          </button>
+          <button className="flex items-center gap-2 px-5 py-3 bg-slate-200 rounded-xl">
+            <Camera size={18} /> Camera
+          </button>
+          <button className="flex items-center gap-2 px-5 py-3 bg-slate-200 rounded-xl">
+            <Mic size={18} /> Voice
+          </button>
         </div>
-      </label>
+      </div>
     </div>
   );
 }
