@@ -10,11 +10,11 @@ import {
   Camera,
   Upload,
   Mic,
-  ChevronDown,
   Globe,
+  ChevronDown,
   Phone,
-  SunMedium,
-  MoonStar,
+  Sun,
+  Moon,
 } from "lucide-react";
 
 const navItems = [
@@ -28,27 +28,29 @@ const navItems = [
   { label: "Settings", icon: Settings },
 ];
 
-export default function HomePage() {
+export default function Page() {
   return (
-    <main className="min-h-screen flex bg-[#f6f7fb]">
-      
+    <main className="flex min-h-screen bg-[#f6f7fb]">
+
       {/* SIDEBAR */}
-      <aside className="w-[260px] bg-white border-r px-5 py-6 flex flex-col">
+      <aside className="w-[270px] bg-white border-r p-5 flex flex-col">
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold">
+          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white">
             ✨
           </div>
           <div>
-            <div className="font-semibold text-lg">Lumi</div>
-            <div className="text-xs text-gray-500">AI Digital Pharmacist</div>
+            <div className="text-[22px] font-semibold">Lumi</div>
+            <div className="text-[13px] text-gray-500">
+              AI Digital Pharmacist
+            </div>
           </div>
         </div>
 
-        <nav className="space-y-2">
+        <div className="space-y-2">
           {navItems.map((item) => (
             <div
               key={item.label}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm cursor-pointer ${
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-[15px] ${
                 item.active
                   ? "bg-indigo-50 text-indigo-600"
                   : "text-gray-600 hover:bg-gray-50"
@@ -58,15 +60,17 @@ export default function HomePage() {
               {item.label}
             </div>
           ))}
-        </nav>
+        </div>
 
-        {/* CHAT CARD */}
-        <div className="mt-auto bg-gradient-to-b from-indigo-50 to-white p-4 rounded-2xl">
-          <div className="text-sm font-semibold">Hi! I’m Lumi ✨</div>
-          <div className="text-xs text-gray-500 mt-1">
-            Your AI Pharmacist
+        {/* CHAT */}
+        <div className="mt-auto bg-indigo-50 p-4 rounded-2xl">
+          <div className="text-[15px] font-semibold">
+            Hi! I’m Lumi ✨
           </div>
-          <button className="mt-4 w-full bg-indigo-500 text-white py-2 rounded-xl text-sm">
+          <p className="text-[13px] text-gray-500 mt-1">
+            Your AI Pharmacist
+          </p>
+          <button className="mt-4 w-full bg-indigo-500 text-white py-2 rounded-xl text-[14px]">
             Talk to Lumi
           </button>
         </div>
@@ -74,27 +78,29 @@ export default function HomePage() {
 
       {/* MAIN */}
       <div className="flex-1 p-6">
-        
+
         {/* HEADER */}
-        <div className="flex justify-between items-start mb-6">
+        <div className="flex justify-between mb-6">
           <div>
-            <h1 className="text-[26px] font-semibold">Hello, Ali 👋</h1>
-            <p className="text-sm text-gray-500">
+            <h1 className="text-[30px] font-semibold">
+              Hello, Ali 👋
+            </h1>
+            <p className="text-[15px] text-gray-500 mt-1">
               We're here to help you stay healthy.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <div className="flex border rounded-xl overflow-hidden">
-              <div className="px-4 py-2 flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-2 px-4 text-[14px]">
                 <Globe size={16} />
                 English
                 <ChevronDown size={14} />
               </div>
-              <div className="px-4 py-2 text-sm font-medium">اردو</div>
+              <div className="px-4 text-[14px] font-medium">اردو</div>
             </div>
 
-            <button className="bg-indigo-50 px-4 py-2 rounded-xl text-indigo-600 text-sm">
+            <button className="bg-indigo-50 px-4 py-2 rounded-xl text-indigo-600 text-[14px]">
               🎤 Voice Input
             </button>
 
@@ -102,71 +108,60 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-[1fr_320px] gap-6">
-          
+        <div className="grid grid-cols-[1fr_330px] gap-6">
+
           {/* LEFT */}
           <div className="space-y-6">
-            
-            {/* SCAN CARD */}
-            <div className="bg-white rounded-2xl p-6 border">
-              <div className="grid grid-cols-2 gap-6 items-center">
-                
-                <div className="flex justify-center">
-                  <div className="w-40 h-52 bg-gray-100 rounded-2xl flex items-center justify-center">
-                    <span className="text-indigo-500 text-3xl">Rx</span>
-                  </div>
-                </div>
 
-                <div>
-                  <h2 className="text-xl font-semibold">
-                    Scan Prescription
-                  </h2>
-                  <p className="text-sm text-gray-500 mt-2">
-                    Upload or capture your prescription and get AI-powered analysis.
-                  </p>
+            {/* SCAN */}
+            <div className="bg-white p-6 rounded-2xl border">
+              <h2 className="text-[22px] font-semibold">
+                Scan Prescription
+              </h2>
+              <p className="text-[14px] text-gray-500 mt-1">
+                Upload or capture your prescription and get AI-powered analysis.
+              </p>
 
-                  <div className="grid grid-cols-3 gap-4 mt-6">
-                    <ScanBtn icon={Camera} label="Camera" />
-                    <ScanBtn icon={Upload} label="Upload" />
-                    <ScanBtn icon={Mic} label="Voice" />
-                  </div>
-                </div>
+              <div className="grid grid-cols-3 gap-4 mt-6">
+                <Btn icon={Camera} label="Scan via Camera" />
+                <Btn icon={Upload} label="Upload Image" />
+                <Btn icon={Mic} label="Voice Input" />
               </div>
             </div>
 
             {/* RISK + SUMMARY */}
-            <div className="grid grid-cols-[300px_1fr] gap-6">
-              
+            <div className="grid grid-cols-[320px_1fr] gap-6">
+
               <div className="bg-white p-6 rounded-2xl border text-center">
-                <div className="text-sm font-medium mb-4">
+                <div className="text-[14px] mb-3">
                   Prescription Risk Score
                 </div>
-                <div className="text-4xl font-bold text-orange-500">
+                <div className="text-[48px] font-bold text-orange-500">
                   7.5
                 </div>
-                <div className="text-sm text-orange-500 mt-2">
+                <div className="text-[14px] text-orange-500">
                   Moderate Risk
                 </div>
               </div>
 
               <div className="bg-white p-6 rounded-2xl border">
-                <h3 className="font-semibold mb-2">
+                <h3 className="text-[16px] font-semibold mb-2">
                   AI Summary (In Simple Words)
                 </h3>
-                <p className="text-sm text-gray-500">
-                  Your prescription has some important points. Some medicines may interact. Please consult doctor if needed.
+                <p className="text-[14px] text-gray-500">
+                  Your prescription has some important points to note. Some medicines may interact with each other.
                 </p>
               </div>
             </div>
 
             {/* TABLE */}
             <div className="bg-white rounded-2xl border">
-              <div className="p-5 font-semibold">
+              <div className="p-5 font-semibold text-[16px]">
                 Your Medicines
               </div>
 
-              <table className="w-full text-sm">
-                <thead className="text-gray-400 text-xs">
+              <table className="w-full text-[14px]">
+                <thead className="text-gray-400 text-[12px]">
                   <tr>
                     <th className="p-4 text-left">Medicine</th>
                     <th>Purpose</th>
@@ -175,43 +170,55 @@ export default function HomePage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <Row name="Metformin 500mg" status="Safe" />
-                  <Row name="Amoxicillin 500mg" status="Caution" />
-                  <Row name="Ibuprofen 400mg" status="High Risk" />
+                  <Row name="Metformin 500mg" />
+                  <Row name="Amoxicillin 500mg" />
+                  <Row name="Ibuprofen 400mg" />
                 </tbody>
               </table>
             </div>
 
           </div>
 
-          {/* RIGHT */}
+          {/* RIGHT PANEL */}
           <div className="space-y-6">
-            
+
+            {/* SCHEDULE */}
             <div className="bg-white p-5 rounded-2xl border">
-              <div className="flex justify-between mb-3">
+              <div className="flex justify-between mb-4">
                 <span className="font-semibold">Today's Schedule</span>
                 <span className="text-indigo-500 text-sm">View all</span>
               </div>
 
-              <ScheduleRow time="8:00 AM" name="Metformin" />
-              <ScheduleRow time="1:00 PM" name="Amoxicillin" />
+              <Schedule time="8:00 AM" name="Metformin 500mg" />
+              <Schedule time="1:00 PM" name="Amoxicillin 500mg" />
+              <Schedule time="8:00 PM" name="Aspirin 75mg" />
             </div>
 
+            {/* ADHERENCE */}
             <div className="bg-white p-5 rounded-2xl border text-center">
-              <div className="font-semibold mb-3">Adherence</div>
-              <div className="text-3xl font-bold text-green-500">
+              <div className="font-semibold mb-2">
+                Adherence Progress
+              </div>
+              <div className="text-[40px] text-green-500 font-bold">
                 85%
               </div>
+              <div className="text-sm text-gray-500">
+                Great job! Keep it up 🎉
+              </div>
             </div>
 
+            {/* PHARMACIES */}
             <div className="bg-white p-5 rounded-2xl border">
-              <div className="font-semibold mb-3">
-                Nearby Pharmacies
+              <div className="flex justify-between mb-4">
+                <span className="font-semibold">Nearby Pharmacies</span>
+                <span className="text-indigo-500 text-sm">View all</span>
               </div>
 
-              <Pharmacy name="HealthPlus" />
-              <Pharmacy name="LifeCare" />
+              <Pharmacy name="HealthPlus Pharmacy" />
+              <Pharmacy name="LifeCare Pharmacy" />
+              <Pharmacy name="CarePoint Pharmacy" />
             </div>
+
           </div>
 
         </div>
@@ -222,29 +229,29 @@ export default function HomePage() {
 
 /* COMPONENTS */
 
-function ScanBtn({ icon: Icon, label }) {
+function Btn({ icon: Icon, label }) {
   return (
-    <div className="bg-gray-50 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-100">
+    <div className="bg-gray-50 p-4 rounded-xl text-center hover:bg-gray-100">
       <Icon className="mx-auto mb-2" size={20} />
-      <div className="text-sm">{label}</div>
+      <div className="text-[13px]">{label}</div>
     </div>
   );
 }
 
-function Row({ name, status }) {
+function Row({ name }) {
   return (
     <tr className="border-t">
       <td className="p-4">{name}</td>
       <td>—</td>
       <td>—</td>
-      <td>{status}</td>
+      <td>Safe</td>
     </tr>
   );
 }
 
-function ScheduleRow({ time, name }) {
+function Schedule({ time, name }) {
   return (
-    <div className="flex justify-between py-2 text-sm">
+    <div className="flex justify-between py-2 text-[14px]">
       <span>{time}</span>
       <span>{name}</span>
     </div>
@@ -253,7 +260,7 @@ function ScheduleRow({ time, name }) {
 
 function Pharmacy({ name }) {
   return (
-    <div className="flex justify-between py-2 text-sm">
+    <div className="flex justify-between py-2 text-[14px]">
       <span>{name}</span>
       <Phone size={16} />
     </div>
