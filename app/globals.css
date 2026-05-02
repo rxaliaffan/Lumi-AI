@@ -2,16 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base styling */
 body {
-  font-family: Inter, system-ui, sans-serif;
-  background-color: #F8FAFC;
+  background-color: #f8fafc;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1f2937;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+/* Reusable card style */
+.card {
+  @apply bg-white rounded-2xl shadow-md p-5 border border-gray-100;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 9999px;
+/* Smooth transitions */
+* {
+  @apply transition duration-200;
 }
