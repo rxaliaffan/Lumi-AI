@@ -4,7 +4,6 @@ import ScanCard from '../components/ScanCard';
 import RiskScore from '../components/RiskScore';
 import MedicinesTable from '../components/MedicinesTable';
 
-// NEW components (you must create these next)
 import SchedulePanel from '../components/SchedulePanel';
 import AdherenceCard from '../components/AdherenceCard';
 import PharmacyPanel from '../components/PharmacyPanel';
