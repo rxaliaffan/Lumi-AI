@@ -11,6 +11,10 @@ import ChatAssistant from '@/components/ChatAssistant';
 export default function HomePage() {
   const [analysisData, setAnalysisData] = useState(null);
 
+  const medicines = analysisData?.medicines || [];
+  const riskScore = analysisData?.riskScore || 0;
+  const warnings = analysisData?.warnings || [];
+
   return (
     <main className="flex min-h-screen bg-[#F8FAFC]">
       {/* Sidebar */}
@@ -33,11 +37,15 @@ export default function HomePage() {
         </div>
 
         {/* Medicines Table */}
-        <MedicinesTable medicines={analysisData?.medicines || []} />
+        <MedicinesTable medicines={medicines} />
 
         {/* AI Assistant */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <ChatAssistant />
+          <ChatAssistant
+            medicines={medicines}
+            riskScore={riskScore}
+            warnings={warnings}
+          />
         </div>
       </section>
     </main>
