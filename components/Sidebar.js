@@ -1,69 +1,26 @@
-'use client';
-
-import {
-  Home,
-  ScanLine,
-  Pill,
-  Bell,
-  User,
-  MessageSquare,
-  Settings,
-} from 'lucide-react';
-
-const navItems = [
-  { icon: Home, label: 'Home' },
-  { icon: ScanLine, label: 'Scan Prescription' },
-  { icon: Pill, label: 'My Medicines' },
-  { icon: Bell, label: 'Reminders' },
-  { icon: User, label: 'Patient Profile' },
-  { icon: MessageSquare, label: 'AI Assistant' },
-  { icon: Settings, label: 'Settings' },
-];
-
 export default function Sidebar() {
   return (
-    <aside className="w-72 bg-white border-r border-gray-100 px-6 py-6 flex flex-col min-h-screen">
+    <div className="w-64 bg-white border-r border-gray-200 p-5">
+      <h1 className="text-xl font-bold text-purple-600 mb-6">
+        Lumi
+      </h1>
 
-      {/* LOGO */}
-      <div className="mb-10">
-        <h1 className="text-xl font-semibold text-indigo-600">Lumi</h1>
-        <p className="text-xs text-gray-500">AI Digital Pharmacist</p>
-      </div>
-
-      {/* NAV */}
-      <nav className="flex flex-col gap-2">
-        {navItems.map((item, idx) => {
-          const Icon = item.icon;
-
-          return (
-            <button
-              key={idx}
-              className={`flex items-center gap-4 px-4 py-3 rounded-xl text-sm transition ${
-                idx === 0
-                  ? 'bg-indigo-100 text-indigo-600 font-medium'
-                  : 'text-gray-600 hover:bg-gray-100'
-              }`}
-            >
-              <Icon size={20} />
-              {item.label}
-            </button>
-          );
-        })}
-      </nav>
-
-      {/* BOTTOM CARD */}
-      <div className="mt-auto pt-6">
-        <div className="bg-gradient-to-br from-indigo-500 to-purple-500 text-white p-4 rounded-2xl">
-          <p className="text-sm font-semibold">Hi! I'm Lumi ✨</p>
-          <p className="text-xs opacity-90 mt-1 mb-3">
-            Your AI Pharmacist assistant
-          </p>
-          <button className="w-full bg-white text-indigo-600 text-sm py-2 rounded-xl">
-            Talk to Lumi
-          </button>
+      <div className="space-y-3">
+        <div className="bg-purple-100 text-purple-600 p-3 rounded-xl">
+          Home
         </div>
+        <div className="text-gray-600 p-3">Scan Prescription</div>
+        <div className="text-gray-600 p-3">My Medicines</div>
+        <div className="text-gray-600 p-3">Drug Interactions</div>
+        <div className="text-gray-600 p-3">Reminders</div>
       </div>
 
-    </aside>
+      <div className="mt-10 bg-purple-50 p-4 rounded-xl text-center">
+        <p className="text-sm">Hi! I'm Lumi 🤖</p>
+        <button className="mt-3 bg-purple-500 text-white px-4 py-2 rounded-xl">
+          Talk to Lumi
+        </button>
+      </div>
+    </div>
   );
 }
