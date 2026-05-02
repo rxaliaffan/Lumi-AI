@@ -2,20 +2,24 @@ export default function Header() {
   return (
     <header className="flex justify-between items-center">
 
+      {/* LEFT */}
       <div>
-        <h2 className="text-2xl font-semibold">Hello, Ali 👋</h2>
+        <h2 className="text-2xl font-semibold">
+          Hello, Affan 👋
+        </h2>
         <p className="text-sm text-gray-500">
-          We’re here to help you stay healthy.
+          Your medication safety overview
         </p>
       </div>
 
+      {/* RIGHT */}
       <div className="flex items-center gap-3">
 
-        <button className="px-4 py-2 bg-gray-100 rounded-xl text-sm">
-          🌐 English
-        </button>
+        <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-xl shadow-sm border">
+          <span className="text-sm">🌐 English</span>
+        </div>
 
-        <button className="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-xl text-sm">
+        <button className="flex items-center gap-2 bg-indigo-100 text-indigo-600 px-4 py-2 rounded-xl text-sm font-medium">
           🎤 Voice Input
         </button>
 
