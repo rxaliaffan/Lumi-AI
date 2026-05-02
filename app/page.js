@@ -1,5 +1,5 @@
 import {
-  Home,
+  Home as HomeIcon,
   ScanSearch,
   Pill,
   TriangleAlert,
@@ -13,12 +13,16 @@ import {
   Globe,
   ChevronDown,
   Phone,
-  Sun,
-  Moon,
+  SunMedium,
+  MoonStar,
+  ShoppingCart,
+  Stethoscope,
+  BellRing,
+  Share2,
 } from "lucide-react";
 
 const navItems = [
-  { label: "Home", icon: Home, active: true },
+  { label: "Home", icon: HomeIcon, active: true },
   { label: "Scan Prescription", icon: ScanSearch },
   { label: "My Medicines", icon: Pill },
   { label: "Drug Interactions", icon: TriangleAlert },
@@ -33,19 +37,22 @@ export default function Page() {
     <main className="flex min-h-screen bg-[#f6f7fb]">
 
       {/* SIDEBAR */}
-      <aside className="w-[270px] bg-white border-r p-5 flex flex-col">
+      <aside className="w-[280px] bg-white border-r px-5 py-5 flex flex-col">
+
+        {/* LOGO */}
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white text-xl">
             ✨
           </div>
           <div>
-            <div className="text-[22px] font-semibold">Lumi</div>
+            <div className="text-[24px] font-semibold">Lumi</div>
             <div className="text-[13px] text-gray-500">
               AI Digital Pharmacist
             </div>
           </div>
         </div>
 
+        {/* NAV */}
         <div className="space-y-2">
           {navItems.map((item) => (
             <div
@@ -62,9 +69,9 @@ export default function Page() {
           ))}
         </div>
 
-        {/* CHAT */}
+        {/* BOT CARD */}
         <div className="mt-auto bg-indigo-50 p-4 rounded-2xl">
-          <div className="text-[15px] font-semibold">
+          <div className="text-[16px] font-semibold">
             Hi! I’m Lumi ✨
           </div>
           <p className="text-[13px] text-gray-500 mt-1">
@@ -82,7 +89,7 @@ export default function Page() {
         {/* HEADER */}
         <div className="flex justify-between mb-6">
           <div>
-            <h1 className="text-[30px] font-semibold">
+            <h1 className="text-[32px] font-semibold">
               Hello, Ali 👋
             </h1>
             <p className="text-[15px] text-gray-500 mt-1">
@@ -91,7 +98,9 @@ export default function Page() {
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="flex border rounded-xl overflow-hidden">
+
+            {/* LANGUAGE */}
+            <div className="flex border rounded-xl overflow-hidden bg-white">
               <div className="flex items-center gap-2 px-4 text-[14px]">
                 <Globe size={16} />
                 English
@@ -100,10 +109,12 @@ export default function Page() {
               <div className="px-4 text-[14px] font-medium">اردو</div>
             </div>
 
+            {/* VOICE */}
             <button className="bg-indigo-50 px-4 py-2 rounded-xl text-indigo-600 text-[14px]">
               🎤 Voice Input
             </button>
 
+            {/* PROFILE */}
             <div className="w-12 h-12 rounded-full bg-gray-200" />
           </div>
         </div>
@@ -123,20 +134,21 @@ export default function Page() {
               </p>
 
               <div className="grid grid-cols-3 gap-4 mt-6">
-                <Btn icon={Camera} label="Scan via Camera" />
-                <Btn icon={Upload} label="Upload Image" />
-                <Btn icon={Mic} label="Voice Input" />
+                <ScanBtn icon={Camera} label="Scan via Camera" />
+                <ScanBtn icon={Upload} label="Upload Image" />
+                <ScanBtn icon={Mic} label="Voice Input" />
               </div>
             </div>
 
             {/* RISK + SUMMARY */}
             <div className="grid grid-cols-[320px_1fr] gap-6">
 
+              {/* RISK */}
               <div className="bg-white p-6 rounded-2xl border text-center">
                 <div className="text-[14px] mb-3">
                   Prescription Risk Score
                 </div>
-                <div className="text-[48px] font-bold text-orange-500">
+                <div className="text-[50px] font-bold text-orange-500">
                   7.5
                 </div>
                 <div className="text-[14px] text-orange-500">
@@ -144,13 +156,20 @@ export default function Page() {
                 </div>
               </div>
 
+              {/* SUMMARY */}
               <div className="bg-white p-6 rounded-2xl border">
                 <h3 className="text-[16px] font-semibold mb-2">
                   AI Summary (In Simple Words)
                 </h3>
-                <p className="text-[14px] text-gray-500">
+                <p className="text-[14px] text-gray-500 mb-4">
                   Your prescription has some important points to note. Some medicines may interact with each other.
                 </p>
+
+                <div className="grid grid-cols-3 gap-4">
+                  <Warning title="Drug Interactions" />
+                  <Warning title="Dose Adjustment" />
+                  <Warning title="Warnings" />
+                </div>
               </div>
             </div>
 
@@ -173,13 +192,22 @@ export default function Page() {
                   <Row name="Metformin 500mg" />
                   <Row name="Amoxicillin 500mg" />
                   <Row name="Ibuprofen 400mg" />
+                  <Row name="Aspirin 75mg" />
                 </tbody>
               </table>
             </div>
 
+            {/* ACTION BUTTONS */}
+            <div className="grid grid-cols-4 gap-4">
+              <Action title="Order Medicine" icon={ShoppingCart} />
+              <Action title="Consult Doctor" icon={Stethoscope} />
+              <Action title="Set Reminder" icon={BellRing} />
+              <Action title="Share Report" icon={Share2} />
+            </div>
+
           </div>
 
-          {/* RIGHT PANEL */}
+          {/* RIGHT */}
           <div className="space-y-6">
 
             {/* SCHEDULE */}
@@ -199,7 +227,7 @@ export default function Page() {
               <div className="font-semibold mb-2">
                 Adherence Progress
               </div>
-              <div className="text-[40px] text-green-500 font-bold">
+              <div className="text-[42px] text-green-500 font-bold">
                 85%
               </div>
               <div className="text-sm text-gray-500">
@@ -220,7 +248,6 @@ export default function Page() {
             </div>
 
           </div>
-
         </div>
       </div>
     </main>
@@ -229,11 +256,19 @@ export default function Page() {
 
 /* COMPONENTS */
 
-function Btn({ icon: Icon, label }) {
+function ScanBtn({ icon: Icon, label }) {
   return (
     <div className="bg-gray-50 p-4 rounded-xl text-center hover:bg-gray-100">
-      <Icon className="mx-auto mb-2" size={20} />
+      <Icon className="mx-auto mb-2" size={22} />
       <div className="text-[13px]">{label}</div>
+    </div>
+  );
+}
+
+function Warning({ title }) {
+  return (
+    <div className="bg-gray-50 p-3 rounded-xl text-[13px]">
+      {title}
     </div>
   );
 }
@@ -263,6 +298,15 @@ function Pharmacy({ name }) {
     <div className="flex justify-between py-2 text-[14px]">
       <span>{name}</span>
       <Phone size={16} />
+    </div>
+  );
+}
+
+function Action({ title, icon: Icon }) {
+  return (
+    <div className="bg-indigo-500 text-white p-4 rounded-xl flex items-center gap-3">
+      <Icon size={18} />
+      <span className="text-[14px]">{title}</span>
     </div>
   );
 }
