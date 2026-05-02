@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { SendHorizonal } from 'lucide-react';
 
-export default function ChatAssistant() {
+export default function ChatAssistant({ analysisData }) {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([
     {
@@ -12,21 +12,6 @@ export default function ChatAssistant() {
     },
   ]);
   const [loading, setLoading] = useState(false);
-
-  // Temporary hardcoded medicines
-  const medicinesList = [
-    { name: 'Metformin', dosage: '500mg' },
-    { name: 'Amoxicillin', dosage: '500mg' },
-    { name: 'Ibuprofen', dosage: '400mg' },
-    { name: 'Aspirin', dosage: '75mg' },
-  ];
-
-  // Temporary risk + warnings
-  const riskScore = 7.5;
-
-  const warnings = [
-    'Ibuprofen + Aspirin may increase bleeding risk',
-  ];
 
   const handleSend = async () => {
     if (!message.trim()) return;
@@ -41,26 +26,27 @@ export default function ChatAssistant() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message,
-          medicines: medicinesList,
-          riskScore,
-          warnings,
+          medicines: analysisData?.medicines || [],
+          riskScore: analysisData?.riskScore || 0,
+          warnings: analysisData?.warnings || [],
         }),
       });
 
       const result = await response.json();
 
-      const aiMessage = {
-        role: 'assistant',
-        text: result.reply || 'Unable to answer right now.',
-      };
-
-      setMessages((prev) => [...prev, aiMessage]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          text: result.reply || 'Unable to answer right now.',
+        },
+      ]);
     } catch (error) {
       setMessages((prev) => [
         ...prev,
         {
           role: 'assistant',
-          text: 'An error occurred while processing your medication question.',
+          text: 'Error connecting to AI service.',
         },
       ]);
     }
