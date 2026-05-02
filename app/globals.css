@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* =========================
-   DESIGN TOKENS (SYSTEM)
+   DESIGN TOKENS
 ========================= */
 
 :root {
@@ -23,7 +23,7 @@
 }
 
 /* =========================
-   BASE STYLES
+   BASE
 ========================= */
 
 html {
@@ -32,15 +32,16 @@ html {
 
 body {
   margin: 0;
+
   background:
-    radial-gradient(circle at top left, rgba(99, 102, 241, 0.05), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.05), transparent 30%),
+    radial-gradient(circle at 0% 0%, rgba(99,102,241,0.06), transparent 30%),
+    radial-gradient(circle at 100% 100%, rgba(59,130,246,0.06), transparent 30%),
     var(--bg);
 
   color: var(--text);
 
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family: var(--font-inter), Inter, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,7 +56,7 @@ body {
 ========================= */
 
 ::selection {
-  background: rgba(99, 102, 241, 0.18);
+  background: rgba(99, 102, 241, 0.2);
 }
 
 /* =========================
@@ -64,41 +65,41 @@ body {
 
 @layer components {
 
-  /* MAIN CARD SYSTEM (CRITICAL FIX) */
+  /* MAIN CARD (matches screenshot softness) */
   .lumi-card {
-    @apply rounded-[24px] border border-[color:var(--border)] bg-white 
-           shadow-[0_6px_18px_rgba(15,23,42,0.04)];
+    @apply rounded-[24px] border border-[color:var(--border)] bg-white
+           shadow-[0_8px_24px_rgba(15,23,42,0.05)];
   }
 
-  /* SOFT GLASS EFFECT (for header / sidebar if needed) */
+  /* SOFT GLASS */
   .lumi-soft {
     @apply bg-white/80 backdrop-blur-md;
   }
 
-  /* TEXT MUTED */
+  /* MUTED TEXT */
   .lumi-muted {
     color: var(--muted);
   }
 
-  /* BUTTON BASE (CONSISTENT SYSTEM) */
+  /* BUTTON SYSTEM */
   .lumi-btn {
-    @apply rounded-xl px-4 py-2 text-sm font-medium transition;
+    @apply rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200;
   }
 
   .lumi-btn-primary {
-    @apply bg-indigo-500 text-white hover:bg-indigo-600;
+    @apply bg-indigo-500 text-white hover:bg-indigo-600 active:scale-[0.98];
   }
 
   .lumi-btn-soft {
     @apply bg-indigo-50 text-indigo-600 hover:bg-indigo-100;
   }
 
-  /* INPUT / SELECT STYLE */
+  /* INPUT */
   .lumi-input {
     @apply border border-[color:var(--border)] bg-white rounded-xl px-3 py-2 text-sm;
   }
 
-  /* TABLE STYLE */
+  /* TABLE */
   .lumi-table th {
     @apply text-[12px] font-medium uppercase tracking-wide text-slate-400;
   }
@@ -110,7 +111,7 @@ body {
 }
 
 /* =========================
-   SCROLLBAR (OPTIONAL POLISH)
+   SCROLLBAR
 ========================= */
 
 ::-webkit-scrollbar {
