@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { SendHorizonal } from 'lucide-react';
 
 export default function ChatAssistant() {
-  const [prompt, setPrompt] = useState('');
+  const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
@@ -13,20 +13,29 @@ export default function ChatAssistant() {
   ]);
   const [loading, setLoading] = useState(false);
 
-  const handleSend = async () => {
-    if (!prompt.trim()) return;
+  // Temporary hardcoded medicines (replace later with real data)
+  const medicinesList = [
+    { name: 'Metformin', dosage: '500mg' },
+    { name: 'Amoxicillin', dosage: '500mg' },
+    { name: 'Ibuprofen', dosage: '400mg' },
+    { name: 'Aspirin', dosage: '75mg' },
+  ];
 
-    const userMessage = { role: 'user', text: prompt };
+  const handleSend = async () => {
+    if (!message.trim()) return;
+
+    const userMessage = { role: 'user', text: message };
     setMessages((prev) => [...prev, userMessage]);
     setLoading(true);
 
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message,
+          medicines: medicinesList,
+        }),
       });
 
       const result = await response.json();
@@ -43,10 +52,11 @@ export default function ChatAssistant() {
         {
           role: 'assistant',
           text: 'An error occurred while processing your medication question.',
-        }, ]);
+        },
+      ]);
     }
 
-    setPrompt('');
+    setMessage('');
     setLoading(false);
   };
 
@@ -78,8 +88,8 @@ export default function ChatAssistant() {
       <div className="flex gap-3">
         <input
           type="text"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           placeholder="Ask about medicines, dosage, side effects..."
           className="flex-1 border rounded-2xl px-4 py-3 outline-none"
           onKeyDown={(e) => e.key === 'Enter' && handleSend()}
@@ -92,5 +102,6 @@ export default function ChatAssistant() {
           <SendHorizonal size={20} />
         </button>
       </div>
-    </div> );
+    </div>
+  );
 }
