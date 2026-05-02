@@ -1,72 +1,47 @@
 'use client';
 
-import { useState } from 'react';
 import { Upload, Camera, Mic } from 'lucide-react';
 
-export default function ScanCard({ onAnalysisComplete }) {
-  const [loading, setLoading] = useState(false);
-
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    setLoading(true);
-
-    const formData = new FormData();
-    formData.append('image', file);
-    formData.append('user_id', 'demo-user');
-
-    try {
-      const response = await fetch('/api/analyze', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        onAnalysisComplete(result);
-      } else {
-        alert(result.error || 'Analysis failed');
-      }
-    } catch (error) {
-      console.error(error);
-      alert('Upload failed');
-    }
-
-    setLoading(false);
-  };
-
+export default function ScanCard() {
   return (
-    <div className="bg-white rounded-2xl shadow-soft p-8">
-      <h3 className="text-2xl font-semibold mb-3">Scan Your Prescription</h3>
-      <p className="text-slate-500 mb-6">
-        Upload, scan, or speak your prescription for AI-powered analysis.
+    <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+      
+      <h3 className="text-xl font-semibold mb-1">Scan Prescription</h3>
+      <p className="text-sm text-gray-500 mb-6">
+        Upload or capture your prescription and get AI-powered analysis.
       </p>
 
-      <div className="border-2 border-dashed border-slate-300 rounded-2xl p-10 text-center bg-slate-50">
-        <p className="text-slate-500 mb-6">
-          Drag & drop prescription image or choose an option below
-        </p>
-  <div className="flex justify-center gap-4 flex-wrap">
-          <label className="flex items-center gap-2 px-5 py-3 bg-primary text-white rounded-xl cursor-pointer">
-            <Upload size={18} />
-            {loading ? 'Analyzing...' : 'Upload'}
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleFileUpload}
-            />
-          </label>
+      {/* Main Card */}
+      <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 flex items-center justify-between">
 
-          <button className="flex items-center gap-2 px-5 py-3 bg-slate-200 rounded-xl">
-            <Camera size={18} /> Camera
+        {/* Left Illustration */}
+        <div className="flex items-center gap-4">
+          <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-sm">
+            📄
+          </div>
+        </div>
+
+        {/* Right Actions */}
+        <div className="flex gap-4">
+
+          {/* Camera */}
+          <button className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-xl shadow-sm hover:shadow-md transition">
+            <Camera size={22} className="text-indigo-500 mb-2" />
+            <span className="text-xs text-gray-600">Scan</span>
           </button>
 
-          <button className="flex items-center gap-2 px-5 py-3 bg-slate-200 rounded-xl">
-            <Mic size={18} /> Voice
+          {/* Upload */}
+          <button className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-xl shadow-sm hover:shadow-md transition">
+            <Upload size={22} className="text-green-500 mb-2" />
+            <span className="text-xs text-gray-600">Upload</span>
           </button>
+
+          {/* Voice */}
+          <button className="flex flex-col items-center justify-center w-24 h-24 bg-white rounded-xl shadow-sm hover:shadow-md transition">
+            <Mic size={22} className="text-purple-500 mb-2" />
+            <span className="text-xs text-gray-600">Voice</span>
+          </button>
+
         </div>
       </div>
     </div>
