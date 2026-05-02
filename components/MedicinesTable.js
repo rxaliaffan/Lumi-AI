@@ -1,21 +1,6 @@
-const medicines = [
-  {
-    name: 'Metformin',
-    dosage: '500mg',
-    purpose: 'Diabetes Management',
-    safety: 'Safe',
-  },
-  {
-    name: 'Ciprofloxacin',
-    dosage: '250mg',
-    purpose: 'Antibiotic',
-    safety: 'Interaction Warning',
-  },
-];
-
-export default function MedicinesTable() {
+export default function MedicinesTable({ medicines }) {
   return (
-    <div className="card">
+    <div className="bg-white rounded-2xl shadow-soft p-8">
       <h3 className="text-2xl font-semibold mb-6">Detected Medicines</h3>
 
       <div className="overflow-x-auto">
@@ -28,20 +13,27 @@ export default function MedicinesTable() {
               <th className="pb-3">Safety</th>
             </tr>
           </thead>
-
           <tbody>
-            {medicines.map((med, idx) => (
-              <tr key={idx} className="border-b last:border-none">
-                <td className="py-4 font-medium">{med.name}</td>
-                <td>{med.dosage}</td>
-                <td>{med.purpose}</td>
-                <td>
-                  <span className="text-sm px-3 py-1 rounded-full bg-slate-100">
-                    {med.safety}
-                  </span>
+            {medicines.length > 0 ? (
+              medicines.map((med, idx) => (
+                <tr key={idx} className="border-b last:border-none">
+                  <td className="py-4 font-medium">{med.name}</td>
+                  <td>{med.dosage}</td>
+                  <td>{med.purpose || 'Pending AI analysis'}</td>
+                  <td>
+                    <span className="text-sm px-3 py-1 rounded-full bg-slate-100">
+                      {med.safety || 'Analyzing'}
+                    </span>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" className="py-8 text-center text-slate-400">
+                  No medicines analyzed yet.
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
