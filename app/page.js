@@ -9,23 +9,19 @@ import MedicinesTable from '@/components/MedicinesTable';
 import ChatAssistant from '@/components/ChatAssistant';
 
 export default function HomePage() {
-  const [analysisData, setAnalysisData] = useState(null);
-
-  const medicines = analysisData?.medicines || [];
-  const riskScore = analysisData?.riskScore || 0;
-  const warnings = analysisData?.warnings || [];
+  const [analysisData, setAnalysisData] = useState({
+    medicines: [],
+    riskScore: 0,
+    warnings: [],
+  });
 
   return (
     <main className="flex min-h-screen bg-[#F8FAFC]">
-      {/* Sidebar */}
       <Sidebar />
 
-      {/* Main Dashboard */}
       <section className="flex-1 p-8 space-y-8 overflow-y-auto">
-        {/* Header */}
         <Header />
 
-        {/* Scan + Risk Score */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <ScanCard onAnalysisComplete={setAnalysisData} />
@@ -36,16 +32,10 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Medicines Table */}
-        <MedicinesTable medicines={medicines} />
+        <MedicinesTable medicines={analysisData.medicines} />
 
-        {/* AI Assistant */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <ChatAssistant
-            medicines={medicines}
-            riskScore={riskScore}
-            warnings={warnings}
-          />
+          <ChatAssistant analysisData={analysisData} />
         </div>
       </section>
     </main>
