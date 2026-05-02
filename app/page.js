@@ -1,116 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+import "./globals.css";
+import { Inter } from "next/font/google";
 
-/* =========================
-   DESIGN TOKENS
-========================= */
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
-:root {
-  --bg: #f6f7fb;
-  --card: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: #e9eaf3;
-  --primary: #6366f1;
-  --primary-soft: #eef2ff;
-  --green: #22c55e;
-  --orange: #f59e0b;
-  --red: #ef4444;
-  --blue: #3b82f6;
-}
+export const metadata = {
+  title: "Lumi AI Pharmacist",
+  description: "AI Digital Pharmacist",
+};
 
-/* =========================
-   BASE
-========================= */
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: radial-gradient(circle at 0% 0%, rgba(99,102,241,0.06), transparent 30%),
-    radial-gradient(circle at 100% 100%, rgba(59,130,246,0.06), transparent 30%), var(--bg);
-  color: var(--text);
-  font-family: var(--font-inter), Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* =========================
-   SELECTION
-========================= */
-
-::selection {
-  background: rgba(99, 102, 241, 0.2);
-}
-
-/* =========================
-   COMPONENT SYSTEM
-========================= */
-
-@layer components {
-  /* MAIN CARD (matches screenshot softness) */
-  .lumi-card {
-    @apply rounded-[24px] border border-[color:var(--border)] bg-white shadow-[0_8px_24px_rgba(15,23,42,0.05)];
-  }
-
-  /* SOFT GLASS */
-  .lumi-soft {
-    @apply bg-white/80 backdrop-blur-md;
-  }
-
-  /* MUTED TEXT */
-  .lumi-muted {
-    color: var(--muted);
-  }
-
-  /* BUTTON SYSTEM */
-  .lumi-btn {
-    @apply rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200;
-  }
-
-  .lumi-btn-primary {
-    @apply bg-indigo-500 text-white hover:bg-indigo-600 active:scale-[0.98];
-  }
-
-  .lumi-btn-soft {
-    @apply bg-indigo-50 text-indigo-600 hover:bg-indigo-100;
-  }
-
-  /* INPUT */
-  .lumi-input {
-    @apply border border-[color:var(--border)] bg-white rounded-xl px-3 py-2 text-sm;
-  }
-
-  /* TABLE */
-  .lumi-table th {
-    @apply text-[12px] font-medium uppercase tracking-wide text-slate-400;
-  }
-
-  .lumi-table td {
-    @apply text-[14px] text-slate-600;
-  }
-}
-
-/* =========================
-   SCROLLBAR
-========================= */
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.3);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.5);
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} font-sans antialiased`}>
+        {children}
+      </body>
+    </html>
+  );
 }
