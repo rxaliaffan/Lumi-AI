@@ -15,7 +15,7 @@ const medicines = [
 
 export default function MedicinesTable() {
   return (
-    <div className="bg-white rounded-2xl shadow-soft p-8">
+    <div className="card">
       <h3 className="text-2xl font-semibold mb-6">Detected Medicines</h3>
 
       <div className="overflow-x-auto">
@@ -28,6 +28,7 @@ export default function MedicinesTable() {
               <th className="pb-3">Safety</th>
             </tr>
           </thead>
+
           <tbody>
             {medicines.map((med, idx) => (
               <tr key={idx} className="border-b last:border-none">
