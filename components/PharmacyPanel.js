@@ -1,30 +1,9 @@
 export default function PharmacyPanel() {
   return (
-    <div className="card space-y-4">
-      <div className="flex justify-between items-center">
-        <h3 className="font-semibold text-gray-800">Nearby Pharmacies</h3>
-        <span className="text-sm text-blue-500 cursor-pointer">View all</span>
-      </div>
-
-      <div className="space-y-4 text-sm">
-        <div>
-          <p className="font-medium">HealthPlus Pharmacy</p>
-          <p className="text-gray-500">0.5 km away</p>
-          <p className="text-green-600 text-xs">Open 24 hours</p>
-        </div>
-
-        <div>
-          <p className="font-medium">LifeCare Pharmacy</p>
-          <p className="text-gray-500">0.8 km away</p>
-          <p className="text-red-500 text-xs">Closes at 10 PM</p>
-        </div>
-
-        <div>
-          <p className="font-medium">CarePoint Pharmacy</p>
-          <p className="text-gray-500">1.2 km away</p>
-          <p className="text-green-600 text-xs">Open 24 hours</p>
-        </div>
-      </div>
+    <div className="bg-white p-5 rounded-2xl border shadow-sm">
+      <h3 className="font-semibold mb-3">Nearby Pharmacies</h3>
+      <p>HealthPlus Pharmacy</p>
+      <p>CarePoint Pharmacy</p>
     </div>
   );
 }
