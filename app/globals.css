@@ -2,19 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================
+   DESIGN TOKENS (SYSTEM)
+========================= */
+
 :root {
   --bg: #f6f7fb;
   --card: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
+  --text: #0f172a;
+  --muted: #64748b;
   --border: #e9eaf3;
-  --primary: #6f63ff;
-  --primary-2: #9c7bff;
+
+  --primary: #6366f1;
+  --primary-soft: #eef2ff;
+
   --green: #22c55e;
   --orange: #f59e0b;
   --red: #ef4444;
-  --blue: #60a5fa;
+  --blue: #3b82f6;
 }
+
+/* =========================
+   BASE STYLES
+========================= */
 
 html {
   scroll-behavior: smooth;
@@ -23,31 +33,95 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top left, rgba(111, 99, 255, 0.06), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.06), transparent 26%),
+    radial-gradient(circle at top left, rgba(99, 102, 241, 0.05), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.05), transparent 30%),
     var(--bg);
+
   color: var(--text);
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
   box-sizing: border-box;
 }
 
+/* =========================
+   SELECTION
+========================= */
+
 ::selection {
-  background: rgba(111, 99, 255, 0.18);
+  background: rgba(99, 102, 241, 0.18);
 }
 
+/* =========================
+   COMPONENT SYSTEM
+========================= */
+
 @layer components {
+
+  /* MAIN CARD SYSTEM (CRITICAL FIX) */
   .lumi-card {
-    @apply rounded-[28px] border border-[color:var(--border)] bg-white shadow-[0_10px_30px_rgba(15,23,42,0.05)];
+    @apply rounded-[24px] border border-[color:var(--border)] bg-white 
+           shadow-[0_6px_18px_rgba(15,23,42,0.04)];
   }
 
+  /* SOFT GLASS EFFECT (for header / sidebar if needed) */
   .lumi-soft {
     @apply bg-white/80 backdrop-blur-md;
   }
 
+  /* TEXT MUTED */
   .lumi-muted {
     color: var(--muted);
   }
+
+  /* BUTTON BASE (CONSISTENT SYSTEM) */
+  .lumi-btn {
+    @apply rounded-xl px-4 py-2 text-sm font-medium transition;
+  }
+
+  .lumi-btn-primary {
+    @apply bg-indigo-500 text-white hover:bg-indigo-600;
+  }
+
+  .lumi-btn-soft {
+    @apply bg-indigo-50 text-indigo-600 hover:bg-indigo-100;
+  }
+
+  /* INPUT / SELECT STYLE */
+  .lumi-input {
+    @apply border border-[color:var(--border)] bg-white rounded-xl px-3 py-2 text-sm;
+  }
+
+  /* TABLE STYLE */
+  .lumi-table th {
+    @apply text-[12px] font-medium uppercase tracking-wide text-slate-400;
+  }
+
+  .lumi-table td {
+    @apply text-[14px] text-slate-600;
+  }
+
+}
+
+/* =========================
+   SCROLLBAR (OPTIONAL POLISH)
+========================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
 }
