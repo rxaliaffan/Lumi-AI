@@ -9,9 +9,10 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-4">
-        <button className="px-5 py-3 rounded-2xl bg-primary text-white font-medium shadow-soft">
+        <button className="px-5 py-3 rounded-2xl bg-primary text-white font-medium shadow-soft hover:opacity-90 transition">
           Upgrade to LumiX
         </button>
+
         <div className="w-12 h-12 rounded-full bg-slate-200" />
       </div>
     </header>
