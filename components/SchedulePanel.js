@@ -1,6 +1,6 @@
 export default function SchedulePanel() {
   return (
-    <div className="bg-white rounded-2xl shadow p-5 space-y-4">
+    <div className="card space-y-4">
       <div className="flex justify-between items-center">
         <h3 className="font-semibold text-gray-800">Today's Schedule</h3>
         <span className="text-sm text-blue-500 cursor-pointer">View all</span>
