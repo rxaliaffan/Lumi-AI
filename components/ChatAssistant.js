@@ -13,12 +13,19 @@ export default function ChatAssistant() {
   ]);
   const [loading, setLoading] = useState(false);
 
-  // Temporary hardcoded medicines (replace later with real data)
+  // Temporary hardcoded medicines
   const medicinesList = [
     { name: 'Metformin', dosage: '500mg' },
     { name: 'Amoxicillin', dosage: '500mg' },
     { name: 'Ibuprofen', dosage: '400mg' },
     { name: 'Aspirin', dosage: '75mg' },
+  ];
+
+  // Temporary risk + warnings
+  const riskScore = 7.5;
+
+  const warnings = [
+    'Ibuprofen + Aspirin may increase bleeding risk',
   ];
 
   const handleSend = async () => {
@@ -35,6 +42,8 @@ export default function ChatAssistant() {
         body: JSON.stringify({
           message,
           medicines: medicinesList,
+          riskScore,
+          warnings,
         }),
       });
 
