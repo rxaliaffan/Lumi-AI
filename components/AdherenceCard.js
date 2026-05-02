@@ -1,17 +1,10 @@
 export default function AdherenceCard() {
   return (
-    <div className="card flex flex-col items-center justify-center">
-      <h3 className="font-semibold text-gray-800 mb-4">
-        Adherence Progress
-      </h3>
-
-      <div className="w-32 h-32 rounded-full border-[10px] border-green-500 flex items-center justify-center">
-        <span className="text-2xl font-bold text-gray-800">85%</span>
+    <div className="bg-white p-5 rounded-2xl border shadow-sm text-center">
+      <h3 className="font-semibold mb-3">Adherence</h3>
+      <div className="text-3xl font-bold text-green-500">
+        85%
       </div>
-
-      <p className="text-sm text-gray-500 mt-3 text-center">
-        Great job! Keep it up 🎉
-      </p>
     </div>
   );
 }
